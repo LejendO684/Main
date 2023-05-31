@@ -146,7 +146,7 @@ function Aiming.UpdateFOV()
 
     circle.Radius = (Aiming.FOV * 3)
 
-    circle.Position = Vector2new(Mouse.X, Mouse.Y + GetGuiInset(GuiService).Y)
+    circle.Position = Vect
 
     circle.NumSides = Aiming.FOVSides
 
