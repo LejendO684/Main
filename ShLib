@@ -367,6 +367,20 @@ function Library:Create(name,subname,keybind)
             Dropdown_2.Size = UDim2.new(0, 435, 0, 0)
         end
     end)
+
+    -- Close dropdown when clicking outside of it
+    UserInputService.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            local dropdownPosition = Dropdown_2.AbsolutePosition
+            local dropdownSize = Dropdown_2.Size
+            local mousePosition = input.Position
+
+            if not (mousePosition.X >= dropdownPosition.X and mousePosition.X <= dropdownPosition.X + dropdownSize.X and
+                mousePosition.Y >= dropdownPosition.Y and mousePosition.Y <= dropdownPosition.Y + dropdownSize.Y) then
+                Dropdown_2.Size = UDim2.new(0, 435, 0, 0) -- Close the dropdown
+            end
+        end
+    end)
 end
 
 		function pageitems:input(text,placeholder,clearonreturn,callback)
